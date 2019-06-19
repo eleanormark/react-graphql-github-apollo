@@ -18,7 +18,7 @@ const GET_REPOSITORIES_OF_CURRENT_USER = gql`
   {
     viewer {
       repositories(
-        first: 5
+        first: 10
         orderBy: { direction: DESC, field: STARGAZERS }
       ) {
         edges {
@@ -49,16 +49,45 @@ const GET_REPOSITORIES_OF_CURRENT_USER = gql`
   }
 `;
 
+const GET_CURRENT_USER_STARRED_REPO = gql`
+  {
+    viewer {
+      login
+      starredRepositories(
+        last: 10
+        ) {
+          edges {
+            node {
+              name
+              url
+              stargazers {
+                totalCount
+              }
+              descriptionHTML
+              primaryLanguage {
+                name
+              }
+              owner {
+                login
+                url
+              }
+            }
+          }
+        }
+    }
+  }
+`;
+
 const Profile = () => (
-    <Query query={GET_REPOSITORIES_OF_CURRENT_USER}>
+    <Query query={GET_CURRENT_USER_STARRED_REPO}>
       {({ data, loading }) => {
         const { viewer } = data;
   
         if (loading || !viewer) {
           return <Loading />;
         }
-  
-        return <RepositoryList repositories={viewer.repositories} />;
+      
+        return <RepositoryList repositories={viewer.starredRepositories} />;
       }}
     </Query>
   );

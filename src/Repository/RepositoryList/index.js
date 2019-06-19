@@ -7,6 +7,7 @@ const RepositoryList = ({ repositories }) =>
   repositories.edges.map(({ node }) => (
     <div key={node.id} >
       <RepositoryItem {...node} />
+      <br />
     </div>
   ));
 

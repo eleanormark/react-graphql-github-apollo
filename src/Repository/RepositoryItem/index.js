@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from '../../Link';
 
 const RepositoryItem = ({
   name,
@@ -7,14 +8,14 @@ const RepositoryItem = ({
   primaryLanguage,
   owner,
   stargazers,
-  watchers,
-  viewerSubscription,
-  viewerHasStarred,
+
 }) => (
   <div>
     <div className="RepositoryItem-title">
-      <h2>
-      </h2>
+
+      <div className="RepositoryItem-title-url">
+        <Link href={url}>{name}</Link>
+      </div>
 
       <div className="RepositoryItem-title-action">
         {stargazers.totalCount} Stars
