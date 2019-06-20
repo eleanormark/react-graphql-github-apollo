@@ -6,10 +6,9 @@ import { ApolloLink } from 'apollo-link';
 import { HttpLink } from 'apollo-link-http';
 import { onError } from 'apollo-link-error';
 import { InMemoryCache } from 'apollo-cache-inmemory';
-
-import * as serviceWorker from './serviceWorker';
 import App from './App';
-
+import * as serviceWorker from './serviceWorker';
+import 'semantic-ui-css/semantic.min.css'
 import './App/style.css';
 
 const GITHUB_BASE_URL = 'https://api.github.com/graphql';
