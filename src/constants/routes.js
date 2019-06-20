@@ -1,2 +1,2 @@
-export const QUERY = '/';
+export const QUERY_TERM = '/';
 export const PROFILE = '/profile';

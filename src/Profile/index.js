@@ -30,8 +30,7 @@ const GET_STAR_REPOSITORIES_BY_CURRENT_USER = gql`
 `;
 
 const GET_QUERY_REPOS = gql`
-  query ($queryString: String!)
-  {
+  query($queryString: String!) {
     search(query: $queryString, type: REPOSITORY, last: 10) {
       repositoryCount
       edges {
@@ -62,6 +61,7 @@ const Profile = () => (
       }
 
       const { viewer } = data;
+      console.log("data", data);
 
       if (loading || !viewer) {
         return <Loading />;
