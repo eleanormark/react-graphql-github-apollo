@@ -1,7 +1,7 @@
 import React from "react";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
-import RepositoryList, { REPOSITORY_FRAGMENT } from '../Repository';
+import RepositoryList, { REPOSITORY_FRAGMENT } from "../Repository";
 import Loading from "../Loading";
 import ErrorMessage from "../Error";
 
@@ -14,13 +14,10 @@ const GET_CURRENT_USER = gql`
   }
 `;
 
-const GET_REPOSITORIES_OF_CURRENT_USER = gql`
+const GET_STAR_REPOSITORIES_BY_CURRENT_USER = gql`
   {
     viewer {
-      repositories(
-        first: 10
-        orderBy: { direction: DESC, field: STARGAZERS }
-      ) {
+      starredRepositories(first: 10) {
         edges {
           node {
             ...repository
@@ -33,7 +30,7 @@ const GET_REPOSITORIES_OF_CURRENT_USER = gql`
 `;
 
 const Profile = () => (
-  <Query query={GET_REPOSITORIES_OF_CURRENT_USER}>
+  <Query query={GET_STAR_REPOSITORIES_BY_CURRENT_USER}>
     {({ data, loading, error }) => {
       if (error) {
         return <ErrorMessage error={error} />;
@@ -45,7 +42,7 @@ const Profile = () => (
         return <Loading />;
       }
 
-      return <RepositoryList repositories={viewer.repositories} />;
+      return <RepositoryList repositories={viewer.starredRepositories} />;
     }}
   </Query>
 );
