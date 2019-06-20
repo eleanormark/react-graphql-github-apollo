@@ -20,7 +20,7 @@ const GET_STAR_REPOSITORIES_BY_CURRENT_USER = gql`
   ${REPOSITORY_FRAGMENT}
 `;
 
-const Profile = () => (
+const STARRED_REPOS = () => (
   <Query query={GET_STAR_REPOSITORIES_BY_CURRENT_USER}>
     {({ data, loading, error }) => {
       if (error) {
@@ -39,4 +39,4 @@ const Profile = () => (
   </Query>
 );
 
-export default Profile;
+export default STARRED_REPOS;

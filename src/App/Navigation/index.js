@@ -11,11 +11,11 @@ const Navigation = ({
   setQuerySearch
 }) => (
   <header className="Navigation">
-    <div className="Navigation-link">
-      <Link to={routes.PROFILE}>Profile</Link>
+    <div className="">
+      <Link to={routes.STARRED_REPOS}>Starred Repos</Link>
     </div>
-    <div className="Navigation-link">
-      <Link to={routes.QUERY_TERM}>Organization</Link>
+    <div className="">
+      <Link to={routes.QUERY_TERM}>Search for Repos</Link>
     </div>
 
     {pathname === routes.QUERY_TERM && (

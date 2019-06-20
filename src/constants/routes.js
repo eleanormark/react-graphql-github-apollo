@@ -1,2 +1,2 @@
 export const QUERY_TERM = '/';
-export const PROFILE = '/profile';
+export const STARRED_REPOS = '/StarredRepos';
