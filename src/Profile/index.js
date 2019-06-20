@@ -80,7 +80,7 @@ const GET_CURRENT_USER_STARRED_REPO = gql`
 `;
 
 const Profile = () => (
-  <Query query={GET_CURRENT_USER_STARRED_REPO}>
+  <Query query={GET_REPOSITORIES_OF_CURRENT_USER}>
     {({ data, loading, error }) => {
       if (error) {
         return <ErrorMessage error={error} />;
@@ -92,7 +92,7 @@ const Profile = () => (
         return <Loading />;
       }
 
-      return <RepositoryList repositories={viewer.starredRepositories} />;
+      return <RepositoryList repositories={viewer.repositories} />;
     }}
   </Query>
 );
