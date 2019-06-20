@@ -29,6 +29,31 @@ const GET_STAR_REPOSITORIES_BY_CURRENT_USER = gql`
   ${REPOSITORY_FRAGMENT}
 `;
 
+const GET_QUERY_REPOS = gql`
+  query ($queryString: String!)
+  {
+    search(query: $queryString, type: REPOSITORY, last: 10) {
+      repositoryCount
+      edges {
+        node {
+          ... on Repository {
+            name
+            descriptionHTML
+            stargazers {
+              totalCount
+            }
+            forks {
+              totalCount
+            }
+            updatedAt
+          }
+        }
+      }
+    }
+  }
+  ${REPOSITORY_FRAGMENT}
+`;
+
 const Profile = () => (
   <Query query={GET_STAR_REPOSITORIES_BY_CURRENT_USER}>
     {({ data, loading, error }) => {

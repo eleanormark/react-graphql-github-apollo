@@ -1,22 +1,12 @@
 import React, { useEffect } from "react";
-import Profile from "../Profile";
-import { Container, Tab } from "semantic-ui-react";
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-const panes = [
-  {
-    menuItem: { key: "star", icon: "star", content: "Starred Repo" },
-    render: () => (
-      <Tab.Pane>
-        {" "}
-        <Profile />
-      </Tab.Pane>
-    )
-  },
-  {
-    menuItem: { key: "search", icon: "search", content: "Search" },
-    render: () => <Tab.Pane> Find Repos </Tab.Pane>
-  }
-];
+import Profile from "../Profile";
+import QUERY from '../Query';
+
+import * as routes from '../constants/routes';
+
+
 
 function App() {
   useEffect(() => {
@@ -24,10 +14,30 @@ function App() {
   }, []);
 
   return (
-    <Container>
-      <h1>Star Spangled Repos</h1>
-      <Tab panes={panes} />
-    </Container>
+    <Router>
+    <div className="App">
+      <div className="App-main">
+        <Route
+          exact
+          path={routes.Query}
+          component={() => (
+            <div className="App-content_large-header">
+              <Query />
+            </div>
+          )}
+        />
+        <Route
+          exact
+          path={routes.PROFILE}
+          component={() => (
+            <div className="App-content_small-header">
+              <Profile />
+            </div>
+          )}
+        />
+      </div>
+    </div>
+  </Router>
   );
 }
 
