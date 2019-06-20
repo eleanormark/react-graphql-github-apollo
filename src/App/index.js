@@ -6,11 +6,10 @@ import QueryTerm from "../QueryTerm";
 import StarredRepos from "../StarredRepos";
 
 import * as routes from "../constants/routes";
+import "./style.css"
+import { Container } from "semantic-ui-react";
 
 function App() {
-  useEffect(() => {
-    console.log("hello from console");
-  }, []);
 
   const [queryString, setQueryString] = useState("elixer");
 
@@ -18,8 +17,7 @@ function App() {
     <Router>
       <div className="App">
         <Navigation queryString={queryString} setQuerySearch={setQueryString} />
-        <br />
-        <div className="App-main">
+        <Container className="App-main">
           <Route
             exact
             path={routes.QUERY_TERM}
@@ -38,7 +36,7 @@ function App() {
               </div>
             )}
           />
-        </div>
+        </Container>
       </div>
     </Router>
   );
