@@ -35,7 +35,11 @@
   .Navigation-link a {
     color: #ffffff;
   }
-  
+
+  .Navigation-link a:hover{
+    color: orange;
+  }
+ 
   .Navigation-search {
     padding: 0 10px;
   }
