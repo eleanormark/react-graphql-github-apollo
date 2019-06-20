@@ -1,28 +1,25 @@
 import React from "react";
 import { Mutation } from "react-apollo";
-import REPOSITORY_FRAGMENT from '../fragments';
+import REPOSITORY_FRAGMENT from "../fragments";
 import Link from "../../Link";
 import Button from "../../Button";
 
-import {
-  STAR_REPOSITORY,
-  UNSTAR_REPOSITORY,
-} from '../mutations';
+import { STAR_REPOSITORY, UNSTAR_REPOSITORY } from "../mutations";
 
 const updateAddStar = (
   client,
   {
     data: {
       addStar: {
-        starrable: { id, viewerHasStarred },
-      },
-    },
-  },
+        starrable: { id, viewerHasStarred }
+      }
+    }
+  }
 ) =>
   client.writeFragment({
     id: `Repository:${id}`,
     fragment: REPOSITORY_FRAGMENT,
-    data: getUpdatedStarData(client, id, viewerHasStarred),
+    data: getUpdatedStarData(client, id, viewerHasStarred)
   });
 
 const updateRemoveStar = (
@@ -30,22 +27,22 @@ const updateRemoveStar = (
   {
     data: {
       removeStar: {
-        starrable: { id, viewerHasStarred },
-      },
-    },
-  },
+        starrable: { id, viewerHasStarred }
+      }
+    }
+  }
 ) => {
   client.writeFragment({
     id: `Repository:${id}`,
     fragment: REPOSITORY_FRAGMENT,
-    data: getUpdatedStarData(client, id, viewerHasStarred),
+    data: getUpdatedStarData(client, id, viewerHasStarred)
   });
 };
 
 const getUpdatedStarData = (client, id, viewerHasStarred) => {
   const repository = client.readFragment({
     id: `Repository:${id}`,
-    fragment: REPOSITORY_FRAGMENT,
+    fragment: REPOSITORY_FRAGMENT
   });
 
   let { totalCount } = repository.stargazers;
@@ -55,8 +52,8 @@ const getUpdatedStarData = (client, id, viewerHasStarred) => {
     ...repository,
     stargazers: {
       ...repository.stargazers,
-      totalCount,
-    },
+      totalCount
+    }
   };
 };
 
@@ -78,7 +75,11 @@ const RepositoryItem = ({
     </div>
     <div>
       {!viewerHasStarred ? (
-        <Mutation mutation={STAR_REPOSITORY} variables={{ id }} update={updateAddStar}>
+        <Mutation
+          mutation={STAR_REPOSITORY}
+          variables={{ id }}
+          update={updateAddStar}
+        >
           {(addStar, { data, loading, error }) => (
             <Button className={"RepositoryItem-title-action"} onClick={addStar}>
               {stargazers.totalCount} Star
@@ -88,7 +89,11 @@ const RepositoryItem = ({
       ) : (
         <span>
           {
-            <Mutation mutation={UNSTAR_REPOSITORY} variables={{ id }} update={updateRemoveStar}>
+            <Mutation
+              mutation={UNSTAR_REPOSITORY}
+              variables={{ id }}
+              update={updateRemoveStar}
+            >
               {(removeStar, { data, loading, error }) => (
                 <Button
                   className={"RepositoryItem-title-action"}

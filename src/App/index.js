@@ -6,11 +6,10 @@ import QueryTerm from "../QueryTerm";
 import StarredRepos from "../StarredRepos";
 
 import * as routes from "../constants/routes";
-import "./style.css"
+import "./style.css";
 import { Container } from "semantic-ui-react";
 
 function App() {
-
   const [queryString, setQueryString] = useState("elixer");
 
   return (
