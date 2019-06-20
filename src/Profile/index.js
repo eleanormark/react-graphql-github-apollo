@@ -1,10 +1,10 @@
-import React from 'react';
-import gql from 'graphql-tag';
-import { Query } from 'react-apollo';
+import React from "react";
+import gql from "graphql-tag";
+import { Query } from "react-apollo";
 
-import RepositoryList from '../Repository';
-import Loading from '../Loading';
-import ErrorMessage from '../Error';
+import RepositoryList from "../Repository";
+import Loading from "../Loading";
+import ErrorMessage from "../Error";
 
 const GET_CURRENT_USER = gql`
   {
@@ -18,10 +18,7 @@ const GET_CURRENT_USER = gql`
 const GET_REPOSITORIES_OF_CURRENT_USER = gql`
   {
     viewer {
-      repositories(
-        first: 10
-        orderBy: { direction: DESC, field: STARGAZERS }
-      ) {
+      repositories(first: 10, orderBy: { direction: DESC, field: STARGAZERS }) {
         edges {
           node {
             id
@@ -54,27 +51,25 @@ const GET_CURRENT_USER_STARRED_REPO = gql`
   {
     viewer {
       login
-      starredRepositories(
-        last: 10
-        ) {
-          edges {
-            node {
+      starredRepositories(last: 10) {
+        edges {
+          node {
+            name
+            url
+            stargazers {
+              totalCount
+            }
+            descriptionHTML
+            primaryLanguage {
               name
+            }
+            owner {
+              login
               url
-              stargazers {
-                totalCount
-              }
-              descriptionHTML
-              primaryLanguage {
-                name
-              }
-              owner {
-                login
-                url
-              }
             }
           }
         }
+      }
     }
   }
 `;
