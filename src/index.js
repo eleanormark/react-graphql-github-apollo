@@ -24,12 +24,11 @@ const httpLink = new HttpLink({
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
-    // do something with graphql error
     console.log("graphQLErrors", graphQLErrors);
   }
 
   if (networkError) {
-    // do something with network error
+
     console.log("networkError", networkError);
   }
 });
