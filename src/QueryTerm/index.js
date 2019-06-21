@@ -37,7 +37,6 @@ const QueryTerm = ({ queryString }) => (
       if (loading && !search) {
         return <Loading />;
       }
-      console.log("search", search.edges.map(el => el.node));
       return <RepositoryList loading={loading} repositories={search} />;
     }}
   </Query>

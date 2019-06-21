@@ -28,7 +28,6 @@ const STARRED_REPOS = () => (
       }
 
       const { viewer } = data;
-      console.log("data", data);
 
       if (loading || !viewer) {
         return <Loading />;
