@@ -13,7 +13,7 @@ const Navigation = ({
   setQuerySearch
 }) => (
   <header className="Navigation">
-    <h1 className="brand">FAST REPOS</h1>
+    <h1 className="brand">StarQuest</h1>
     <div className="Navigation-link">
       <Link to={routes.STARRED_REPOS}>Starred Repos</Link>
     </div>
