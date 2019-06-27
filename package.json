@@ -5,10 +5,7 @@
   "dependencies": {
     "apollo-boost": "^0.4.3",
     "apollo-cache-inmemory": "^1.6.2",
-    "apollo-client": "^2.6.3",
-    "apollo-link": "^1.2.12",
     "apollo-link-error": "^1.1.11",
-    "apollo-link-http": "^1.5.15",
     "gitstar-components": "^1.0.5",
     "graphql": "^14.3.1",
     "graphql-tag": "^2.10.1",
@@ -19,8 +16,7 @@
     "react-scripts": "3.0.1",
     "react-test-renderer": "^16.8.6",
     "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^0.87.2",
-    "unfetch": "^4.1.0"
+    "semantic-ui-react": "^0.87.2"
   },
   "scripts": {
     "start": "react-scripts start",

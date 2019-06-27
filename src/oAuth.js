@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import fetch from "unfetch";
 import { ApolloProvider } from "react-apollo";
 import ApolloClient from "apollo-boost";
 import { onError } from "apollo-link-error";
