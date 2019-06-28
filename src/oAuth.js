@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ApolloProvider } from "react-apollo";
 import ApolloClient from "apollo-boost";
-import { onError } from "apollo-link-error";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import App from "./App";
 import "./App/style.css";
@@ -11,16 +10,6 @@ import STATUS from "./constants/status";
 const CLIENT_ID = "1f9bd52cc8095599320d";
 const REDIRECT_URI = "http://localhost:3000/";
 const GITHUB_BASE_URL = "https://api.github.com/graphql";
-
-const errorLink = onError(({ graphQLErrors, networkError }) => {
-  if (graphQLErrors) {
-    console.log("graphQLErrors", graphQLErrors);
-  }
-
-  if (networkError) {
-    console.log("networkError", networkError);
-  }
-});
 
 const cache = new InMemoryCache();
 
@@ -36,7 +25,6 @@ const client = new ApolloClient({
       });
     }
   },
-  errorLink,
   cache
 });
 
@@ -57,7 +45,6 @@ const OAuth = () => {
           }
         });
     }
-    console.log("status:::", status);
   });
 
   return (
