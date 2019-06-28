@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import { ApolloProvider } from "react-apollo";
 import ApolloClient from "apollo-boost";
 import { onError } from "apollo-link-error";
@@ -7,7 +7,6 @@ import App from "./App";
 import "./App/style.css";
 import "semantic-ui-css/semantic.min.css";
 import STATUS from "./constants/status";
-import { Loading as LoadingAuth } from "gitstar-components";
 
 const CLIENT_ID = "1f9bd52cc8095599320d";
 const REDIRECT_URI = "http://localhost:3000/";
@@ -41,58 +40,41 @@ const client = new ApolloClient({
   cache
 });
 
-class OAuth extends Component {
-  state = {
-    status: STATUS.INITIAL,
-    token: null
-  };
+const OAuth = () => {
+  const [status, setStatus] = useState(STATUS.INITIAL);
 
-  componentDidMount() {
+  useEffect(() => {
     let params = new URL(document.location).searchParams;
     let code = params.get("code");
 
     if (code) {
-      this.setState({ status: STATUS.LOADING });
       fetch(`https://starquest999.herokuapp.com/authenticate/${code}`)
         .then(response => response.json())
         .then(({ token }) => {
           if (token) {
             localStorage.setItem("github_token", token);
+            setStatus(STATUS.FINISHED_LOADING);
           }
-          this.setState({
-            token,
-            status: STATUS.FINISHED_LOADING
-          });
         });
     }
-  }
-  render() {
-    return (
-      <ApolloProvider client={client}>
-        <div>
-          {
-            <div>
-              <a
-                href={`https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&scope=user%20public_repo%20gist&redirect_uri=${REDIRECT_URI}`}
-              >
-                Login
-              </a>
-              <LoadingAuth 
-                status={this.state.status}
-                callback={() => {
-                  if (this.props.status !== STATUS.AUTHENTICATED) {
-                    this.setState({
-                      status: STATUS.AUTHENTICATED
-                    });
-                  }
-                }}
-              />
-            </div>
-          }
-          {this.state.status === STATUS.AUTHENTICATED && <App />}
-        </div>
-      </ApolloProvider>
-    );
-  }
-}
+    console.log("status:::", status);
+  });
+
+  return (
+    <ApolloProvider client={client}>
+      <div>
+        {
+          <div>
+            <a
+              href={`https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&scope=user%20public_repo%20gist&redirect_uri=${REDIRECT_URI}`}
+            >
+              Login
+            </a>
+          </div>
+        }
+        {status === STATUS.FINISHED_LOADING && client !== undefined && <App />}
+      </div>
+    </ApolloProvider>
+  );
+};
 export default OAuth;
