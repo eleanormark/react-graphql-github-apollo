@@ -2,10 +2,8 @@ import React, { useEffect, useState } from "react";
 import { ApolloProvider } from "react-apollo";
 import ApolloClient from "apollo-boost";
 import { InMemoryCache } from "apollo-cache-inmemory";
-import App from "./components/App";
-import "./components/App/style.css";
-import "semantic-ui-css/semantic.min.css";
-import STATUS from "./constants/status";
+import App from "./App";
+import STATUS from "../constants/status";
 
 const CLIENT_ID = "1f9bd52cc8095599320d";
 const REDIRECT_URI = "http://localhost:3000/";

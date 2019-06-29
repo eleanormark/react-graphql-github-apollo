@@ -8,7 +8,7 @@ import ErrorMessage from "./Error";
 const GET_STAR_REPOSITORIES_BY_CURRENT_USER = gql`
   {
     viewer {
-      starredRepositories(first: 10) {
+      starredRepositories(last: 10) {
         edges {
           node {
             ...repository

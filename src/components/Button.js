@@ -7,7 +7,7 @@ const Btn = styled.button`
   cursor: pointer;
   transition: color 0.25s ease-in-out;
   transition: background 0.25s ease-in-out;
-
+  font-size: 14px;
   ${props =>
     props.black &&
     css`

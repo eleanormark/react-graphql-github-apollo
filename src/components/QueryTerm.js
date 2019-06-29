@@ -8,7 +8,7 @@ import ErrorMessage from "./Error";
 
 const GET_REPOSITORIES_OF_ORGANIZATION = gql`
   query($queryString: String!) {
-    search(type: REPOSITORY, query: $queryString, first: 10) {
+    search(type: REPOSITORY, query: $queryString, last: 10) {
       edges {
         node {
           ...repository

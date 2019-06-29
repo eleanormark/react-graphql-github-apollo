@@ -68,8 +68,8 @@ const RepositoryItem = ({
   viewerHasStarred
 }) => (
   <div>
-    <div className="RepositoryItem-title">
-      <div className="RepositoryItem-title-url">
+    <div>
+      <div>
         <Link href={url}>{name}</Link>
       </div>
     </div>
@@ -95,10 +95,7 @@ const RepositoryItem = ({
               update={updateRemoveStar}
             >
               {(removeStar, { data, loading, error }) => (
-                <Button
-                  white
-                  onClick={removeStar}
-                >
+                <Button white onClick={removeStar}>
                   {stargazers.totalCount} Unstar
                 </Button>
               )}
@@ -107,12 +104,9 @@ const RepositoryItem = ({
         </span>
       )}
     </div>
-    <div className="RepositoryItem-description">
-      <div
-        className="RepositoryItem-description-info"
-        dangerouslySetInnerHTML={{ __html: descriptionHTML }}
-      />
-      <div className="RepositoryItem-description-details">
+    <div>
+      <div dangerouslySetInnerHTML={{ __html: descriptionHTML }} />
+      <div>
         <div>
           {primaryLanguage && <span>Language: {primaryLanguage.name}</span>}
         </div>
