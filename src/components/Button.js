@@ -11,7 +11,7 @@ const Btn = styled.button`
   ${props =>
     props.black &&
     css`
-      background: black;
+      background: #24292e;
       border: 1px solid white;
       color: white;
       &:hover {
@@ -24,11 +24,11 @@ const Btn = styled.button`
     props.white &&
     css`
       background: white;
-      border: 1px solid black;
+      border: 1px solid #24292e;
       color: black;
       &:hover {
         color: white;
-        background: black;
+        background: #24292e;
       }
     `};
 `;

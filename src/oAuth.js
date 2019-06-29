@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { ApolloProvider } from "react-apollo";
 import ApolloClient from "apollo-boost";
 import { InMemoryCache } from "apollo-cache-inmemory";
-import App from "./App";
-import "./App/style.css";
+import App from "./components/App";
+import "./components/App/style.css";
 import "semantic-ui-css/semantic.min.css";
 import STATUS from "./constants/status";
 
