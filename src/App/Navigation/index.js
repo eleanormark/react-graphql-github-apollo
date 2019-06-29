@@ -3,9 +3,26 @@ import { Link, withRouter } from "react-router-dom";
 
 import * as routes from "../../constants/routes";
 import Button from "../../Button";
-import Input from "../../Input";
 
 import './style.css'
+import styled from 'styled-components';
+
+const Input = styled.input`
+  border: solid 1px #dbdbdb;
+  color:black;
+  text-align: left;
+  padding: 10px;
+  background: #f5f5f5;
+  &:focus {
+    outline: none;
+  }
+`
+
+const Brand = styled.h1`
+  margin-left: 20px;
+  color: orange;
+  padding-top: 10px;
+`
 
 const Navigation = ({
   location: { pathname },
@@ -13,7 +30,7 @@ const Navigation = ({
   setQuerySearch
 }) => (
   <header className="Navigation">
-    <h1 className="brand">StarQuest</h1>
+    <Brand>StarQuest</Brand>
     <div className="Navigation-link">
       <Link to={routes.STARRED_REPOS}>Starred Repos</Link>
     </div>
@@ -41,12 +58,11 @@ const QuerySearch = (props) => {
         }}
       >
         <Input
-          color={"white"}
           type="text"
           value={term}
           onChange={e => setTerm(e.target.value)}
         />{" "}
-        <Button color={"white"} type="submit">
+        <Button black type="submit">
           Search
         </Button>
       </form>

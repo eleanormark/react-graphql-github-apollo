@@ -9,12 +9,6 @@
   align-items: baseline;
 }
 
-.brand {
-  margin-left: 20px;
-  color: orange;
-  padding-top: 10px;
-}
-
 @media only screen and (max-device-width: 480px) {
   .Navigation {
     flex-direction: column;

@@ -81,7 +81,7 @@ const RepositoryItem = ({
           update={updateAddStar}
         >
           {(addStar, { data, loading, error }) => (
-            <Button className={"RepositoryItem-title-action"} onClick={addStar}>
+            <Button white onClick={addStar}>
               {stargazers.totalCount} Star
             </Button>
           )}
@@ -96,7 +96,7 @@ const RepositoryItem = ({
             >
               {(removeStar, { data, loading, error }) => (
                 <Button
-                  className={"RepositoryItem-title-action"}
+                  white
                   onClick={removeStar}
                 >
                   {stargazers.totalCount} Unstar
