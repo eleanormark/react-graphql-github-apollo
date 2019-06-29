@@ -7,7 +7,7 @@ const size = {
   laptopL: "1440px",
   desktop: "2560px",
   screenS: "480px;",
-  screenM: "792px"
+  screenM: "813px"
 };
 
 export const device = {

@@ -14,6 +14,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
 `;
 
 const ContainerMain = styled.div`
@@ -21,10 +22,10 @@ const ContainerMain = styled.div`
 `;
 
 const ContainerContent = styled.div`
-  margin-top: 84px;
+  margin-top: 100px;
   margin-left: 20px;
   @media ${device.screenM} {
-    margin-top: 240px;
+    margin-top: 260px;
   }
   a {
     text-decoration: none;

@@ -6,7 +6,7 @@ import RepositoryList, { REPOSITORY_FRAGMENT } from "./Repository";
 import Loading from "./Loading";
 import ErrorMessage from "./Error";
 
-const GET_REPOSITORIES_OF_ORGANIZATION = gql`
+const GET_REPOSITORIES_OF_QUERY = gql`
   query($queryString: String!) {
     search(type: REPOSITORY, query: $queryString, last: 10) {
       edges {
@@ -21,7 +21,7 @@ const GET_REPOSITORIES_OF_ORGANIZATION = gql`
 
 const QueryTerm = ({ queryString }) => (
   <Query
-    query={GET_REPOSITORIES_OF_ORGANIZATION}
+    query={GET_REPOSITORIES_OF_QUERY}
     variables={{
       queryString
     }}
