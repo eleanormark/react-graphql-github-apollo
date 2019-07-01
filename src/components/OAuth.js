@@ -69,7 +69,7 @@ const OAuth = () => {
         {status !== STATUS.FINISHED_LOADING && (
           <Login>
             <a
-              href={`https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&scope=user%20public_repo%20gist&redirect_uri=${REDIRECT_URI}`}
+              href={`https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&scope=user%20public_repo&redirect_uri=${REDIRECT_URI}`}
             >
               Login with Github
             </a>
