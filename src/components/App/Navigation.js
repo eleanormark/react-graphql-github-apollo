@@ -69,7 +69,7 @@ const NavSearch = styled.div`
   }
 `;
 
-export const Navigation = ({
+const Navigation = ({
   location: { pathname },
   queryString,
   setQuerySearch
@@ -89,7 +89,7 @@ export const Navigation = ({
   </Nav>
 );
 
-export const QuerySearch = props => {
+const QuerySearch = props => {
   const [term, setTerm] = useState(props.queryString);
   return (
     <NavSearch>
