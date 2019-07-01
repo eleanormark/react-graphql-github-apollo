@@ -7,9 +7,9 @@
 
 # testing
 /coverage
-/src/tests
-.babelrc
-jest.config.json
+# /src/tests
+# .babelrc
+# jest.config.json
 
 # production
 /build

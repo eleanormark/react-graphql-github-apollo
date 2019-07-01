@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render Navigation correctly with <QuerySearch /> 1`] = `
+<styled.header>
+  <styled.h1>
+    StarQuest
+  </styled.h1>
+  <styled.div>
+    <Link
+      to="/StarredRepos"
+    >
+      Starred Repos
+    </Link>
+  </styled.div>
+  <styled.div>
+    <Link
+      to="/"
+    >
+      Search for Repos
+    </Link>
+  </styled.div>
+  <QuerySearch />
+</styled.header>
+`;
+
+exports[`should render Navigation correctly without <QuerySearch /> 1`] = `
+<styled.header>
+  <styled.h1>
+    StarQuest
+  </styled.h1>
+  <styled.div>
+    <Link
+      to="/StarredRepos"
+    >
+      Starred Repos
+    </Link>
+  </styled.div>
+  <styled.div>
+    <Link
+      to="/"
+    >
+      Search for Repos
+    </Link>
+  </styled.div>
+</styled.header>
+`;
